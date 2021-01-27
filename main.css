@@ -1,0 +1,67 @@
+
+.tippy-content {
+   padding: 0;
+    box-shadow: 0 0 20px 11px rgba(0, 0, 0, 0.80);
+}
+.tippy-arrow {
+    color: white;
+}
+
+.nh-gal-preview {
+    display: flex;
+    background: #0d0d0d;
+}
+.nh-gal-preview img {
+    height: 255px;
+    border-right: 1px solid #181623
+}
+.nh-gal-preview img:last-child {
+    border: none;
+}
+.nh-gal-loader {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+    transition: 0.15s all;
+}
+
+.pagination > .nh-gal-loader {
+    position: relative;
+    background: #0d0d0d;
+}
+
+.cover > div.caption,
+img.lazyload {
+    pointer-events: none;
+    z-index: 0 !important;
+}
+
+.btn-square .fa-cogs {
+    position: relative;
+    left: -1px;
+}
+
+.btn-scroll-page-top {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .5;
+    z-index: 69;
+    transition: 0.2s all;
+}
+
+.btn-scroll-page-top:hover {
+    opacity: 1;
+}
