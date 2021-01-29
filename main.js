@@ -139,6 +139,13 @@ const showSettings = () => {
                             </div>
                             <input name="pagination" type="checkbox" checked="checked">
                         </div>
+                        <div class="input-group has-checkbox">
+                            <div class="left">
+                                <span>Reverse mode</span>
+                                <small>Pagination goes in the opposite way, from end to start.</small>
+                            </div>
+                            <input name="reverseMode" type="checkbox">
+                        </div>
                     </main>
                     <footer class="modal__footer">
                         <button class="modal__btn" data-micromodal-close aria-label="Close">Close</button>
@@ -164,6 +171,17 @@ const showSettings = () => {
         localStorage.setItem('nhgp-timeout', value.toString());
     });
 
+    const reverseMode = modal.find('input[name="reverseMode"]');
+    reverseMode.bootstrapToggle();
+
+    if(localStorage.getItem('nhgp-reverseMode') === 'true') {
+        reverseMode.bootstrapToggle('on');
+    }
+
+    reverseMode.on('change', (e) => {
+        localStorage.setItem('nhgp-reverseMode', $(e.target).prop('checked').toString());
+    });
+
     const pagination = modal.find('input[name="pagination"]');
     pagination.bootstrapToggle();
 
@@ -172,7 +190,7 @@ const showSettings = () => {
     }
 
     pagination.on('change', (e) => {
-        localStorage.setItem('nhgp-pagination', $(e.target).prop('checked').toString())
+        localStorage.setItem('nhgp-pagination', $(e.target).prop('checked').toString());
     })
 
     $('body').append(modal);
@@ -195,15 +213,31 @@ const nextPageLoading = () => {
         }
 
         container.addClass('loading');
-        container.find('.pagination').html(loaderTemplate);
 
         const url = new URL(location.href);
         let page = parseInt(url.searchParams.get('page'));
         if(isNaN(page) || page < 1) {
-            page = 1;
+            if(localStorage.getItem('nhgp-reverseMode') === 'true') {
+                let lastPage = new URL(location.origin+$('.pagination .last').attr('href'));
+                page = parseInt(lastPage.searchParams.get('page'));
+                page++;
+            } else {
+                page = 1;
+            }
         }
 
-        page++;
+        container.find('.pagination').html(loaderTemplate);
+        
+        if(localStorage.getItem('nhgp-reverseMode') === 'true') {
+            page--;
+
+            if(page < 1) {
+                page = 1;
+            }
+        } else {
+            page++;
+        }
+
         url.searchParams.set('page', page.toString());
 
         fetch(url.toString()).then(r => r.text()).then(html => {

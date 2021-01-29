@@ -4,6 +4,7 @@ This addon adds few small features, which already should have been present from 
 
 #### Features:
  - infinite scroll (on/off)
+ - reverse mode - scroll from last to first page
  - ![alt text](https://raw.githubusercontent.com/bunch-of-fluff/nhentai-firefox-extension/main/readme/infiscroll.gif)
  - gallery previews
  - ![alt text](https://raw.githubusercontent.com/bunch-of-fluff/nhentai-firefox-extension/main/readme/previews.gif)

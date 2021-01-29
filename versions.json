@@ -5,6 +5,10 @@
         {
           "version": "1.6",
           "update_link": "https://github.com/bunch-of-fluff/nhentai-firefox-extension/blob/main/web-ext-artifacts/nhentainet_gallery_previews-1.6.zip?raw=true"
+        },
+        {
+          "version": "1.7",
+          "update_link": "https://github.com/bunch-of-fluff/nhentai-firefox-extension/blob/main/web-ext-artifacts/nhentainet_gallery_previews-1.7.zip?raw=true"
         }
       ]
     }
